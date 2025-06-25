@@ -63,11 +63,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
     const removeButton = childEntry.querySelector(".btn-remove");
     removeButton.addEventListener("click", () => {
-      const index = children.findIndex(
+      const indexe = children.findindexe(
         (c) => c.name === child.name && c.age === child.age
       );
-      if (index > -1) {
-        children.splice(index, 1);
+      if (indexe > -1) {
+        children.splice(indexe, 1);
       }
       childEntry.remove();
       console.log(children);
@@ -209,8 +209,8 @@ document.addEventListener("DOMContentLoaded", function () {
       matchesFilter(item, currentFilter)
     );
 
-    filteredItems.forEach((item, index) => {
-      if (index < 2 || seeMoreVisible) {
+    filteredItems.forEach((item, indexe) => {
+      if (indexe < 2 || seeMoreVisible) {
         item.style.display = 'block';
       } else {
         item.style.display = 'none';
