@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Acamp. - Summmer cump</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
+
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+    
+  
+
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    
+    <div class="container"></div>
+    
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const container = document.querySelector('.container');
+
+  // Delegate click event for all .spa-link elements
+  document.body.addEventListener('click', async function (e) {
+    const link = e.target.closest('.spa-link');
+    if (link) {
+      e.preventDefault();
+      const url = link.getAttribute('href');
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw new Error('Page not found');
+        const html = await response.text();
+
+        // Extract only the content inside <body> (optional, for clean insert)
+        const tempDiv = document.createElement('div');
+        tempDiv.innerHTML = html;
+        // You can adjust this selector to target a specific part of the loaded page
+        const pageContent = tempDiv.querySelector('.container') || tempDiv.querySelector('body') || tempDiv;
+
+        container.innerHTML = pageContent.innerHTML;
+
+        // Optionally update the browser history
+        window.history.pushState({url}, '', url);
+      } catch (err) {
+        container.innerHTML = "<p>Erreur lors du chargement de la page.</p>";
+      }
+    }
+  });
+
+  // Handle browser back/forward
+  window.addEventListener('popstate', async function (event) {
+    if (event.state && event.state.url) {
+      const response = await fetch(event.state.url);
+      const html = await response.text();
+      const tempDiv = document.createElement('div');
+      tempDiv.innerHTML = html;
+      const pageContent = tempDiv.querySelector('.container') || tempDiv.querySelector('body') || tempDiv;
+      container.innerHTML = pageContent.innerHTML;
+    }
+  });
+});
+</script>
+  </body>
+</html>

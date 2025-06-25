@@ -1,35 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>form</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-
-   
-</head>
-<body>
+  </head>
+  <body>
     <nav>
       <div class="logo">Acamp.</div>
       <button class="mobile-menu-btn">☰</button>
       <ul class="nav-links">
-        <li><a href="indexe.html#">Accueil</a></li>
-        <li><a href="indexe.html#programs">Programmes</a></li>
-        <li><a href="indexe.html#Galerie">Galerie</a></li>
-        <li><a href="indexe.html#contact">Contactez-nous</a></li>
-        <a class="form-btn "   href="form.html">Inscription</a>
+        <li><a href="index.html#">Accueil</a></li>
+        <li><a href="index.html#programs">Programmes</a></li>
+        <li><a href="index.html#Galerie">Galerie</a></li>
+        <li><a href="index.html#contact">Contactez-nous</a></li>
+        <a class="form-btn" href="form.html">Inscription</a>
       </ul>
     </nav>
-    <section class="register-section" id="registration"  data-aos="fade-down" data-aos-duration="1000" data-aos-delay="200">
-      <div class="register-wrapper" >
+    <section
+      class="register-section"
+      id="registration"
+      data-aos="fade-down"
+      data-aos-duration="1000"
+      data-aos-delay="200"
+    >
+      <div class="register-wrapper">
         <div class="form-side">
           <header class="section-header">
             <h2>Inscrivez votre enfant</h2>
             <p>Recevez les tarifs et les détails par formulaire.</p>
           </header>
 
-          <form class="registration-form" id="form" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="1000">
+          <form
+            class="registration-form"
+            id="form"
+            data-aos="fade-down"
+            data-aos-duration="1000"
+            data-aos-delay="1000"
+          >
             <div class="form-grid">
               <div class="form-group">
                 <label for="parentName">Nom du parent*</label>
@@ -143,15 +153,15 @@
             </div>
           </form>
           <div id="successMessage" class="hidden">
-  ✅ Your message has been sent successfully!
-</div>
+            ✅ Your message has been sent successfully!
+          </div>
         </div>
       </div>
     </section>
     <script src="scripts.js"></script>
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
     <script>
-    AOS.init();
+      AOS.init();
     </script>
-</body>
+  </body>
 </html>
