@@ -106,13 +106,13 @@ nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 4rem 5%;
+      padding: 4rem 10vw;
       margin-top: 60px;
       gap: 2rem;
       flex-wrap: wrap;
       position: relative;
       overflow: hidden;
-
+      min-height: 80vh;
      background: radial-gradient(circle at top left, #fef3e2, #f5a385);
      background: radial-gradient(circle at top, #fff0d6, #ffd5ae, #ffa45b);
 
@@ -244,9 +244,7 @@ nav {
   /* box-shadow: 0 5px 15px rgba(0,0,0,0.05); */
   width: 130px;
 }
-.stat-box:first-child{
-  /* border-left: none; */
-}
+
 .stat-box h3 {
   font-size: 1.5rem;
   color: #FF6A3D; /* your brand orange */
