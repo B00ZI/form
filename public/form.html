@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>form</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+   
+</head>
+<body>
+    <nav>
+      <div class="logo">Acamp.</div>
+      <button class="mobile-menu-btn">☰</button>
+      <ul class="nav-links">
+        <li><a href="index.html#">Accueil</a></li>
+        <li><a href="index.html#programs">Programmes</a></li>
+        <li><a href="index.html#Galerie">Galerie</a></li>
+        <li><a href="index.html#contact">Contactez-nous</a></li>
+        <a class="form-btn " target="_blank" href="form.html">Inscription</a>
+      </ul>
+    </nav>
+    <section class="register-section" id="registration"  data-aos="fade-down" data-aos-duration="1000" data-aos-delay="200">
+      <div class="register-wrapper" >
+        <div class="form-side">
+          <header class="section-header">
+            <h2>Inscrivez votre enfant</h2>
+            <p>Recevez les tarifs et les détails par formulaire.</p>
+          </header>
+
+          <form class="registration-form" id="form" data-aos="fade-down" data-aos-duration="1000" data-aos-delay="1000">
+            <div class="form-grid">
+              <div class="form-group">
+                <label for="parentName">Nom du parent*</label>
+                <input
+                  type="text"
+                  id="parentName"
+                  name="parent_name"
+                  placeholder="Entrez le nom complet"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="phone">Numéro de téléphone*</label>
+                <input
+                  type="tel"
+                  id="phone"
+                  name="phone_number"
+                  placeholder="+212 6 00 00 00 00"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="email">Adresse e-mail*</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  placeholder="votre@email.com"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="childCount">Nombre d’enfants*</label>
+                <input
+                  type="number"
+                  id="childCount"
+                  name="number_of_children"
+                  min="1"
+                  placeholder="Entrez un nombre"
+                  required
+                />
+              </div>
+
+              <div class="form-group full-width">
+                <label for="address">Adresse complète*</label>
+                <input
+                  type="text"
+                  id="address"
+                  name="address"
+                  placeholder="Rue, Ville, Code postal"
+                  required
+                />
+              </div>
+
+              <div class="form-group full-width">
+                <label>Ajouter un Enfant*</label>
+                <div class="child-input-container">
+                  <div class="child-input-row">
+                    <input
+                      type="text"
+                      id="childName"
+                      placeholder="Nom de l'enfant"
+                    />
+                    <input
+                      type="number"
+                      id="childAge"
+                      placeholder="Âge"
+                      min="5"
+                      max="15"
+                    />
+                    <button type="button" class="btn-add-child">
+                      <i class="fas fa-plus"></i> Ajouter
+                    </button>
+                  </div>
+                </div>
+
+                <div class="children-list">
+                  <h4>Enfants Ajoutés</h4>
+                  <div id="childrenContainer"></div>
+                </div>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="program">Choix du programme*</label>
+                <select id="program" name="program_choice" required>
+                  <option value="" disabled selected>
+                    Sélectionnez un programme
+                  </option>
+                  <option value="nature">Camp Explorateur Nature</option>
+                  <option value="tech">Camp Tech et Innovation</option>
+                  <option value="arts">Camp Arts Créatifs</option>
+                </select>
+              </div>
+
+              <div class="form-group full-width">
+                <label for="notes">Notes supplémentaires</label>
+                <textarea
+                  id="notes"
+                  rows="3"
+                  name="additional_notes"
+                  placeholder="Indiquez allergies, besoins spécifiques, etc."
+                ></textarea>
+              </div>
+
+              <div class="form-buttons full-width">
+                <button type="submit" class="btn-register">Envoyer</button>
+              </div>
+            </div>
+          </form>
+          <div id="successMessage" class="hidden">
+  ✅ Your message has been sent successfully!
+</div>
+        </div>
+      </div>
+    </section>
+    <script src="scripts.js"></script>
+    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script>
+    AOS.init();
+    </script>
+</body>
+</html>

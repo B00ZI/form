@@ -119,75 +119,134 @@ document.addEventListener("DOMContentLoaded", function () {
 
 // End of the script
 //scripts carosell
- document.addEventListener('DOMContentLoaded', function() {
-  const campCards = document.querySelector('.camp-cards');
-  const originalCards = Array.from(document.querySelectorAll('.camp-card'));
+//  document.addEventListener('DOMContentLoaded', function() {
+//   const campCards = document.querySelector('.camp-cards');
+//   const originalCards = Array.from(document.querySelectorAll('.camp-card'));
   
-  // Create scrollable container (scrollbar hidden)
-  const carouselWrapper = document.createElement('div');
-  Object.assign(carouselWrapper.style, {
-    display: 'flex',
-    gap: '24px',
-    width: '100%',
+//   // Create scrollable container (scrollbar hidden)
+//   const carouselWrapper = document.createElement('div');
+//   Object.assign(carouselWrapper.style, {
+//     display: 'flex',
+//     gap: '24px',
+//     width: '100%',
     
-    overflowX: 'auto',
-    scrollSnapType: 'x mandatory',
-    scrollBehavior: 'smooth',
-    // Hide scrollbar across all browsers
-    msOverflowStyle: 'none',
-    scrollbarWidth: 'none',
-    '::-webkit-scrollbar': { display: 'none' }
-  });
+//     overflowX: 'auto',
+//     scrollSnapType: 'x mandatory',
+//     scrollBehavior: 'smooth',
+//     // Hide scrollbar across all browsers
+//     msOverflowStyle: 'none',
+//     scrollbarWidth: 'none',
+//     '::-webkit-scrollbar': { display: 'none' }
+//   });
   
-  // Hide scrollbar for Webkit browsers
-  const style = document.createElement('style');
-  style.textContent = `
-    .camp-cards > div::-webkit-scrollbar {
-      display: none;
-    }
-  `;
-  document.head.appendChild(style);
+//   // Hide scrollbar for Webkit browsers
+//   const style = document.createElement('style');
+//   style.textContent = `
+//     .camp-cards > div::-webkit-scrollbar {
+//       display: none;
+//     }
+//   `;
+//   document.head.appendChild(style);
   
-  // Add cards to container
-  originalCards.forEach(card => {
-    const cardWrapper = document.createElement('div');
-    cardWrapper.style.scrollSnapAlign = 'start';
-    cardWrapper.style.flexShrink = '0';
-    cardWrapper.appendChild(card);
-    carouselWrapper.appendChild(cardWrapper);
-  });
+//   // Add cards to container
+//   originalCards.forEach(card => {
+//     const cardWrapper = document.createElement('div');
+//     cardWrapper.style.scrollSnapAlign = 'start';
+//     cardWrapper.style.flexShrink = '0';
+//     cardWrapper.appendChild(card);
+//     carouselWrapper.appendChild(cardWrapper);
+//   });
   
-  // Replace original content
-  campCards.innerHTML = '';
-  campCards.appendChild(carouselWrapper);
+//   // Replace original content
+//   campCards.innerHTML = '';
+//   campCards.appendChild(carouselWrapper);
   
-  // Enable touch/swipe scrolling
-  let startX;
-  carouselWrapper.addEventListener('touchstart', (e) => {
-    startX = e.touches[0].clientX;
-  }, { passive: true });
+//   // Enable touch/swipe scrolling
+//   let startX;
+//   carouselWrapper.addEventListener('touchstart', (e) => {
+//     startX = e.touches[0].clientX;
+//   }, { passive: true });
   
-  carouselWrapper.addEventListener('touchmove', (e) => {
-    // Let native scroll handle it
-  }, { passive: true });
+//   carouselWrapper.addEventListener('touchmove', (e) => {
+//     // Let native scroll handle it
+//   }, { passive: true });
   
-  // Enable mouse wheel horizontal scrolling
-  carouselWrapper.addEventListener('wheel', (e) => {
-    if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
-      e.preventDefault();
-      carouselWrapper.scrollLeft += e.deltaY * 2;
-    }
-  }, { passive: true });
+//   // Enable mouse wheel horizontal scrolling
+//   carouselWrapper.addEventListener('wheel', (e) => {
+//     if (Math.abs(e.deltaY) > Math.abs(e.deltaX)) {
+//       e.preventDefault();
+//       carouselWrapper.scrollLeft += e.deltaY * 2;
+//     }
+//   }, { passive: true });
   
-  // Optional: Scale down on mobile
-  function scaleForMobile() {
-    const scale = window.innerWidth <= 768 ? 0.85  : 1;
-    originalCards.forEach(card => {
-      card.style.transform = `scale(${scale})`;
-      card.style.margin = scale < 1 ? '0 -20px' : '';
-    });
+//   // Optional: Scale down on mobile
+//   function scaleForMobile() {
+//     const scale = window.innerWidth <= 768 ? 0.85  : 1;
+//     originalCards.forEach(card => {
+//       card.style.transform = `scale(${scale})`;
+//       card.style.margin = scale < 1 ? '0 -20px' : '';
+//     });
+//   }
+  
+//   scaleForMobile();
+//   window.addEventListener('resize', scaleForMobile);
+// });
+// scrypte ta3 lgallory 
+
+  const filterButtons = document.querySelectorAll('.gallery-filters button');
+  const galleryItems = document.querySelectorAll('.gallery-item');
+  const seeMoreButton = document.querySelector('.see-more-btn');
+
+  let currentFilter = 'all';
+  let seeMoreVisible = false;
+
+  function matchesFilter(item, filter) {
+    return filter === 'all' || item.dataset.category === filter;
   }
-  
-  scaleForMobile();
-  window.addEventListener('resize', scaleForMobile);
-});
+
+  function updateGallery() {
+    let filteredItems = Array.from(galleryItems).filter(item =>
+      matchesFilter(item, currentFilter)
+    );
+
+    filteredItems.forEach((item, index) => {
+      if (index < 2 || seeMoreVisible) {
+        item.style.display = 'block';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+
+    // Hide all non-matching
+    galleryItems.forEach(item => {
+      if (!matchesFilter(item, currentFilter)) {
+        item.style.display = 'none';
+      }
+    });
+
+    // Button logic
+    if (filteredItems.length > 2) {
+      seeMoreButton.style.display = 'inline-block';
+      seeMoreButton.textContent = seeMoreVisible ? 'Voir moins' : 'Voir plus';
+    } else {
+      seeMoreButton.style.display = 'none';
+    }
+  }
+
+  filterButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      filterButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      currentFilter = btn.dataset.filter;
+      seeMoreVisible = false;
+      updateGallery();
+    });
+  });
+
+  seeMoreButton.addEventListener('click', () => {
+    seeMoreVisible = !seeMoreVisible;
+    updateGallery();
+  });
+
+  // Initial load
+  updateGallery();
