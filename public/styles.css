@@ -103,21 +103,28 @@ nav {
 
 /* Hero Section */
     .hero {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 4rem 7vw;
-      margin-top: 60px;
-      gap: 2rem;
-      flex-wrap: wrap;
+    
       position: relative;
-      overflow: hidden;
-      min-height: 90vh;
+    
      background: radial-gradient(circle at top left, #fef3e2, #f5a385);
      background: radial-gradient(circle at top, #fff0d6, #ffd5ae, #ffa45b);
 
     }
-
+    .hero-container {
+      /* background-color: #000; */
+        display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 4rem 2vw;
+      gap: 2rem;
+      flex-wrap: wrap;
+      /* overflow: hidden; */
+      min-height: 70vh;
+      max-width: 1200px;
+      margin: 0 auto;
+      margin-top:50px ;
+    }
+    
     .hero-text {
       flex: 2;
       max-width: 600px;
@@ -182,16 +189,18 @@ nav {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 1rem;
+      margin: 0 auto;
+
     }
 
     .hero-image {
-      width: 190px;
+      max-width: 180px;
       border-radius: 10px;
       padding: 4px;
       border: #ac5536 solid 2px;
       box-shadow: 0 4px 10px #0000001a;
       object-fit: cover;
-      height: 160px;
+      height:150px;
       transition: transform 0.3s ease;
     }
     .hero-images .img1 {
@@ -237,16 +246,16 @@ nav {
 
 .stat-box {
   text-align: center;
-  padding: 15px;
+  padding: 10px;
   border-radius: 12px;
   /* border-left: #000 solid 1px; */
   background: #ffffffa2;
   /* box-shadow: 0 5px 15px rgba(0,0,0,0.05); */
-  width: 130px;
+  width: 110px;
 }
 
 .stat-box h3 {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #FF6A3D; /* your brand orange */
   margin: 0;
 }
@@ -254,15 +263,16 @@ nav {
 .stat-box p {
   margin: 3px 0 0;
   color: #444;
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 500;
 }
 
     @media (max-width: 768px) {
-      .hero {
+      .hero-container {
         flex-direction: column;
+        
         text-align: center;
-        padding: 4rem 1rem 2rem;
+        padding: 4rem 0.7rem 2rem;
       }
 
       .hero-buttons {
@@ -276,7 +286,7 @@ nav {
 
       .hero-images {
               grid-template-columns: repeat(2, 1fr);
-              /* width: 80%; */
+              /* width:140px; */
 
         gap: 0.5rem;
       }
@@ -294,7 +304,7 @@ nav {
       }
 
       .hero-image {
-        /* width: 90%; */
+        width: 95%;
         margin: 0 auto;
         border-radius: 8px;
       }
