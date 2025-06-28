@@ -11,6 +11,16 @@ app.use(cors());
 app.use(express.json()); // 🚨 REQUIRED for JSON
 // app.use(bodyParser.json()); // Optional
 
+const path = require('path');
+
+// Serve static frontend files
+app.use(express.static(path.join(__dirname, '../public')));
+
+// Serve index.html for root route
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/index.html'));
+});
+
 // Routes
 app.use('/api/form', formRoutes);
 
